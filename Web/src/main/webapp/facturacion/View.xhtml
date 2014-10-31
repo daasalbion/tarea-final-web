@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacturacionViewDlg" widgetVar="FacturacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFacturacionTitle}">
+            <h:form id="FacturacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facturacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFacturacionLabel_idFacturacion}"/>
+                        <h:outputText value="#{facturacionController.selected.idFacturacion}" title="#{bundle.ViewFacturacionTitle_idFacturacion}"/>
+                        <h:outputText value="#{bundle.ViewFacturacionLabel_fecha}"/>
+                        <h:outputText value="#{facturacionController.selected.fecha}" title="#{bundle.ViewFacturacionTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFacturacionLabel_idVenta}"/>
+                        <h:outputText value="#{facturacionController.selected.idVenta}" title="#{bundle.ViewFacturacionTitle_idVenta}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FacturacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

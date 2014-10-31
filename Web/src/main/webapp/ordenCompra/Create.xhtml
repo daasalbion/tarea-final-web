@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdenCompraCreateDlg" widgetVar="OrdenCompraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOrdenCompraTitle}">
+            <h:form id="OrdenCompraCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordenCompraController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOrdenCompraLabel_idOrdenCompra}" for="idOrdenCompra" />
+                        <p:inputText id="idOrdenCompra" value="#{ordenCompraController.selected.idOrdenCompra}" title="#{bundle.CreateOrdenCompraTitle_idOrdenCompra}" required="true" requiredMessage="#{bundle.CreateOrdenCompraRequiredMessage_idOrdenCompra}"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenCompraLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{ordenCompraController.selected.fecha}" title="#{bundle.EditOrdenCompraTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOrdenCompraLabel_idProducto}" for="idProducto" />
+                        <p:selectOneMenu id="idProducto" value="#{ordenCompraController.selected.idProducto}" >
+                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"
+                                           var="idProductoItem"
+                                           itemValue="#{idProductoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ordenCompraController.create}" value="#{bundle.Save}" update="display,:OrdenCompraListForm:datalist,:growl" oncomplete="handleSubmit(args,'OrdenCompraCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrdenCompraCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

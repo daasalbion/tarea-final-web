@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Tarea Final Programacion Web</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Grupo 9
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:menuitem value="Productos" url="/producto/List.xhtml" />
+                        <p:menuitem value="Clientes" url="/cliente/List.xhtml" />
+                        <p:menuitem value="Compras" url="/compra/List.xhtml" />
+                        <p:menuitem value="Ventas" url="/venta/List.xhtml" />
+                        <p:menuitem value="Proveedores" url="/proveedor/List.xhtml" />
+                        <p:menuitem value="Pagos" url="/pago/List.xhtml" />
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <div id="content" class="center_content">
+                        <ui:insert name="content"></ui:insert>
+                    </div>
+                </p:layoutUnit>
+                
+                <!--<p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>-->
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

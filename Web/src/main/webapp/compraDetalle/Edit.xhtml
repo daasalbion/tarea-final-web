@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompraDetalleEditDlg" widgetVar="CompraDetalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCompraDetalleTitle}">
+            <h:form id="CompraDetalleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{compraDetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCompraDetalleLabel_idCompraDetalle}" for="idCompraDetalle" />
+                        <p:inputText id="idCompraDetalle" value="#{compraDetalleController.selected.idCompraDetalle}" title="#{bundle.EditCompraDetalleTitle_idCompraDetalle}" required="true" requiredMessage="#{bundle.EditCompraDetalleRequiredMessage_idCompraDetalle}"/>
+                        <p:outputLabel value="#{bundle.EditCompraDetalleLabel_idCompra}" for="idCompra" />
+                        <p:inputText id="idCompra" value="#{compraDetalleController.selected.idCompra}" title="#{bundle.EditCompraDetalleTitle_idCompra}" />
+                        <p:outputLabel value="#{bundle.EditCompraDetalleLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{compraDetalleController.selected.cantidad}" title="#{bundle.EditCompraDetalleTitle_cantidad}" />
+                        <p:outputLabel value="#{bundle.EditCompraDetalleLabel_idProducto}" for="idProducto" />
+                        <p:selectOneMenu id="idProducto" value="#{compraDetalleController.selected.idProducto}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"
+                                           var="idProductoItem"
+                                           itemValue="#{idProductoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{compraDetalleController.update}" value="#{bundle.Save}" update="display,:CompraDetalleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CompraDetalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompraDetalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

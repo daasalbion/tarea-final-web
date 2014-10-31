@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompraDetalleViewDlg" widgetVar="CompraDetalleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCompraDetalleTitle}">
+            <h:form id="CompraDetalleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{compraDetalleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCompraDetalleLabel_idCompraDetalle}"/>
+                        <h:outputText value="#{compraDetalleController.selected.idCompraDetalle}" title="#{bundle.ViewCompraDetalleTitle_idCompraDetalle}"/>
+                        <h:outputText value="#{bundle.ViewCompraDetalleLabel_idCompra}"/>
+                        <h:outputText value="#{compraDetalleController.selected.idCompra}" title="#{bundle.ViewCompraDetalleTitle_idCompra}"/>
+                        <h:outputText value="#{bundle.ViewCompraDetalleLabel_cantidad}"/>
+                        <h:outputText value="#{compraDetalleController.selected.cantidad}" title="#{bundle.ViewCompraDetalleTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewCompraDetalleLabel_idProducto}"/>
+                        <h:outputText value="#{compraDetalleController.selected.idProducto}" title="#{bundle.ViewCompraDetalleTitle_idProducto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CompraDetalleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
